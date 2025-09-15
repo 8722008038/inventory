@@ -1,42 +1,214 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* === V2: MODERN & VIBRANT DESIGN === */
+
+/* --- 1. COLOR PALETTE & GLOBAL STYLES --- */
+:root {
+  /* Core Palette */
+  --primary-color: #3682f5; /* A vibrant blue for primary actions */
+  --secondary-color: #34d399; /* A fresh green for success/creation */
+  --danger-color: #ef4444; /* A clear red for delete actions */
+
+  /* Neutral Palette */
+  --background-color: #f8fafc; /* A very light, clean gray */
+  --container-bg: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --border-focus: var(--primary-color);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+
+  /* --- A more robust way to center the entire app --- */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns to top, not vertical center */
+  min-height: 100vh;
+  padding-top: 60px; /* Gives space from the top of the browser */
+}
+
+/* Fallback for browsers not supporting 'Inter' */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* --- 2. MAIN APP CONTAINER --- */
+.container {
+  width: 100%; /* Take up available space */
+  max-width: 1024px;
+  padding: 2.5rem;
+  background-color: var(--container-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+
+h1 {
   text-align: center;
+  color: var(--text-primary);
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* --- 3. TOP SECTION LAYOUT --- */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* --- 4. IMPROVED FORM & INPUT STYLING --- */
+.product-form {
+  flex-basis: 40%; /* Give the form a bit more space */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(54, 130, 245, 0.25);
+}
+
+/* --- 5. ENHANCED BUTTONS (PRIMARY, SECONDARY, DANGER) --- */
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Green button for "Create" or "Save" */
+button.btn-create,
+.product-form button[type="submit"] {
+  background-color: var(--secondary-color);
+  color: white;
+}
+button.btn-create:hover {
+  background-color: #25a97f;
+}
+
+/* Blue button for standard actions like "Edit" */
+button.btn-edit {
+  background-color: var(--primary-color);
+  color: white;
+}
+button.btn-edit:hover {
+  background-color: #276fdc;
+}
+
+/* Red button for "Delete" */
+button.btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+}
+button.btn-delete:hover {
+  background-color: #d63333;
+}
+
+/* Gray button for "Cancel" */
+button.btn-cancel {
+  background-color: #f1f5f9;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+button.btn-cancel:hover {
+  background-color: #e2e8f0;
+}
+
+/* --- 6. REFINED PRODUCT LIST / TABLE --- */
+.product-list table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.product-list th,
+.product-list td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.product-list th {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Zebra-striping for better readability */
+.product-list tr:nth-child(even) {
+  background-color: #fdfdff;
+}
+
+/* Styling for the Edit/Delete buttons in the table */
+.product-list td .actions {
+  display: flex;
+  gap: 10px;
+}
+.product-list td .actions button {
+  padding: 6px 12px; /* Make table buttons smaller */
+  font-size: 0.875rem;
+}
+
+/* --- 7. RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+  .top {
+    flex-direction: column;
+    align-items: stretch;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 640px) {
+  body {
+    padding-top: 20px;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .container {
+    margin: 0 1rem;
+    padding: 1.5rem;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  h1 {
+    font-size: 1.75rem;
+  }
 }
