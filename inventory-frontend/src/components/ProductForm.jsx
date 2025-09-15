@@ -39,7 +39,7 @@ const ProductForm = ({ onCreate, editing, onUpdate, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="border p-4 rounded">
+    <form onSubmit={handleSubmit} className="border p-4 rounded bg-sky-500">
       <h3>{editing ? "Edit Product" : "Add Product"}</h3>
       <input
         type="text"
